@@ -1,5 +1,12 @@
-/target/
+﻿# 此为注释 – 将被 Git 忽略
+
+*.iml
+.idea/
 .gitignore
+*.class
+target/
 .project
-*.MF
-*/pom.properties
+.settings
+.classpath
+.prefs
+.component
