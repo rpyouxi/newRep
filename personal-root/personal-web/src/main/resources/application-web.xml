@@ -19,16 +19,5 @@
 	<!-- 开启spring注解 -->
 	<context:annotation-config />
 
-	<bean id="email" class="com.thatf.personal.common.mail.AccountEmailUtil">
-
-	</bean>
-
-	<bean id="propertyConfigurer"
-		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-		<property name="location" value="classpath:email.properties">
-		</property>
-
-	</bean>
-
 
 </beans>
