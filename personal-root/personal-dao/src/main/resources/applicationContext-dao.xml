@@ -12,10 +12,13 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
 		http://www.springframework.org/schema/cache  http://www.springframework.org/schema/cache/spring-cache.xsd">
 
+	<!-- 自动扫描 将Mapper接口生成代理注入到Spring 采用MapperScannerConfigurer，它将会查找类路径下的映射器并自动将它们创建成MapperFactoryBean http://www.cnblogs.com/daxin/p/3545040.html-->
+    <!-- 创建dao bean（只需提供接口不需提供实现类 ） -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.jiedaibao.fox.dao"/>
+        <property name="basePackage" value="com.thatf.personal.dao"/>
     </bean>
-
+	
+	<!-- dbcp数据源 -->
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
         <property name="driverClassName" value="com.mysql.jdbc.Drivers"/>
         <property name="url" value="jdbc:mysql://127.0.0.1:3306/personal?useUnicode=true&amp;characterEncoding=UTF-8&amp;autoReconnect=true&amp;zeroDateTimeBehavior=convertToNull&amp;transformedBitIsBoolean=true&amp;allowMultiQueries=true&amp;"/>
@@ -34,23 +37,26 @@
         <property name="testWhileIdle" value="true" />
         <property name="validationQuery" value="SELECT VERSION()"/>
     </bean>
-
+    
+	<!-- 在 MyBatis-Spring 中,使用 SqlSessionFactoryBean创建session工厂 -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
         <property name="typeAliasesPackage" value="com.jiedaibao.fox.domain"/>
         <property name="mapperLocations" value="classpath*:mappers/*.xml"/>
     </bean>
-
-    <bean id="foxTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+	
+	<!-- jdbc事务管理器 -->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource"/>
     </bean>
 
-    <tx:annotation-driven transaction-manager="foxTransactionManager"/>
-    <bean id="dataSourceAspect" class="com.jiedaibao.fox.datasource.DataSourceAspect"></bean>
+	<!-- 开启事务注解 -->
+    <tx:annotation-driven transaction-manager="transactionManager"/>
 
+	<!-- Spring AOP http://blog.csdn.net/xiaoxian8023/article/details/17225339 -->
     <aop:config>
-        <aop:aspect ref="dataSourceAspect">
-            <aop:pointcut id="performance" expression="execution (* com.jiedaibao.fox.biz.*.*(..))"/>
+        <aop:aspect>
+            <aop:pointcut id="performance" expression="execution (* com.thatf.personal.biz.*.*(..))"/>
             <aop:before pointcut-ref="performance" method="before"/>
             <aop:after pointcut-ref="performance" method="after"/>
         </aop:aspect>
