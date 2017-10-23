@@ -18,7 +18,7 @@
 	</listener>
 
 	<servlet>
-		<servlet-name>personal-web</servlet-name>
+		<servlet-name>personalWeb</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
@@ -29,7 +29,7 @@
 
 
 	<servlet-mapping>
-		<servlet-name>personal-web</servlet-name>
+		<servlet-name>personalWeb</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 
