@@ -12,7 +12,7 @@
 <script type="text/javascript"
 	src="/common/ztree/js/jquery-1.4.4.min.js"></script>
 <script type="text/javascript"
-	src="common/ztree/js/jquery.ztree.core-3.5.js"></script>
+	src="/common/ztree/js/jquery.ztree.core-3.5.js"></script>
 <!-- <script type="text/javascript" -->
 <!-- 	src="/common/ztree/js/jquery.ztree.exedit-3.5.js"></script> -->
 
