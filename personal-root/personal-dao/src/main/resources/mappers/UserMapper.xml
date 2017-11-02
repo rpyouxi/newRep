@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.thatf.personal.dao.UserDao">
+    <resultMap type="com.thatf.personal.domain.User" id="resultMap">
+        <result property="id" column="ID"/>
+        <result property="userName" column="USERNAME"/>
+        <result property="password" column="PASSWORD"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    	ID,USERNAME,PASSWORD
+    </sql>
+	
+	<select id="queryById" resultMap="resultMap" >
+		select <include refid="Base_Column_List"/> from user where ID = #{id}
+	</select>
+</mapper>

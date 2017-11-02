@@ -110,6 +110,31 @@
 		<module>personal-dao</module>
 	</modules>
 	<build>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+				<includes>
+					<include>*.xml</include>
+					<include>*.properties</include>
+					<include>*.pfx</include>
+					<include>*.cer</include>
+				</includes>
+			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
+				<includes>
+					<include>**/*.xml</include>
+					<include>**/*.properties</include>
+					<include>**/*.xls</include>
+					<include>**/*.txt</include>
+				</includes>
+				<excludes>
+					<exclude>profiles/**</exclude>
+				</excludes>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
 		<plugins>
 			<!-- 开启Java5支持 -->
 			<plugin>

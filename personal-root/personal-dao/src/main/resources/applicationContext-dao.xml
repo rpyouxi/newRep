@@ -20,7 +20,7 @@
 	
 	<!-- dbcp数据源 -->
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
-        <property name="driverClassName" value="com.mysql.jdbc.Drivers"/>
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
         <property name="url" value="jdbc:mysql://127.0.0.1:3306/personal?useUnicode=true&amp;characterEncoding=UTF-8&amp;autoReconnect=true&amp;zeroDateTimeBehavior=convertToNull&amp;transformedBitIsBoolean=true&amp;allowMultiQueries=true&amp;"/>
         <property name="username" value="root"/>
         <property name="password" value="mysql56"/>
@@ -41,7 +41,7 @@
 	<!-- 在 MyBatis-Spring 中,使用 SqlSessionFactoryBean创建session工厂 -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
-        <property name="typeAliasesPackage" value="com.jiedaibao.fox.domain"/>
+        <property name="typeAliasesPackage" value="com.thatf.personal.domain"/>
         <property name="mapperLocations" value="classpath*:mappers/*.xml"/>
     </bean>
 	
@@ -54,11 +54,11 @@
     <tx:annotation-driven transaction-manager="transactionManager"/>
 
 	<!-- Spring AOP http://blog.csdn.net/xiaoxian8023/article/details/17225339 -->
-    <aop:config>
+<!--     <aop:config>
         <aop:aspect>
             <aop:pointcut id="performance" expression="execution (* com.thatf.personal.biz.*.*(..))"/>
             <aop:before pointcut-ref="performance" method="before"/>
             <aop:after pointcut-ref="performance" method="after"/>
         </aop:aspect>
-    </aop:config>
+    </aop:config> -->
 </beans>

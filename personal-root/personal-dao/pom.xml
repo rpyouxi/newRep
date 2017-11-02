@@ -7,9 +7,8 @@
     <artifactId>personal-root</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <groupId>com.thatf.personal</groupId>
+  <groupId>com.thatf.personal.dao</groupId>
   <artifactId>personal-dao</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
   <name>personal-dao</name>
   <url>http://maven.apache.org</url>
   <properties>
