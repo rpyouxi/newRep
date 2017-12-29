@@ -9,4 +9,6 @@ public interface LoginService {
 	
 
 	User queryById(Long id);
+	
+	void register(User user);
 }
