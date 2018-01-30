@@ -1,6 +1,6 @@
 package com.thatf.personal.common.util;
 
-public class StringUtils {
+public class StringUtil {
 	
 	/**
 	 * @Description:null或空返回true
