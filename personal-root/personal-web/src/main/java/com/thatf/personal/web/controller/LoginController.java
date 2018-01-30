@@ -3,6 +3,7 @@ package com.thatf.personal.web.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.thatf.personal.domain.User;
 import com.thatf.personal.service.Interface.LoginService;
@@ -20,6 +21,12 @@ public class LoginController {
 		User user = loginService.queryById(1L);
 		System.out.println("user is "+user);
 		return "/index.jsp";	
+	}
+	
+	@RequestMapping(value="/test")
+	@ResponseBody
+	public String test(){
+		return "123";
 	}
 
 }
